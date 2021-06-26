@@ -10,9 +10,9 @@ set softtabstop=4
 set shiftwidth=4 " 4 spaces for auto indent
 set tabstop=4
 set smarttab
-set nu
+set number relativenumber
 
-let g:netrw_browse_split=4 " open in prior window
+"let g:netrw_browse_split=4 " open in prior window
 let g:netrw_liststyle=3 " tree view
 
 set splitright " opens new splits in the right pane
