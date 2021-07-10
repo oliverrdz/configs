@@ -43,6 +43,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], 'b', lazy.spawn('brave'), desc='Brave browser'),
     Key([mod], 'f', lazy.spawn('thunar'), desc='Thunar file browser'),
+    Key([mod], 'x', lazy.spawn('slock'), desc='Lock screen'),
 
     # Script launchers
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
@@ -111,7 +112,7 @@ for i in groups:
     ])
 
 layouts = [
-    layout.Columns(border_focus_stack='#d75f5f'),
+    layout.Columns(border_focus_stack='#d75f5f', margin=5),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
