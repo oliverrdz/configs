@@ -6,7 +6,6 @@
 # Copyright (c) 2013 horsik
 # Copyright (c) 2013 Tao Sauvage
 #
-#
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
 # in the Software without restriction, including without limitation the rights
@@ -32,14 +31,23 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
+import os
+import subprocess
+
 mod = "mod4"
-terminal = 'alacritty' #guess_terminal()
+terminal = 'alacritty'
 
 keys = [
 
     # Applications
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], 'b', lazy.spawn('brave'), desc='Brave browser'),
+    Key([mod], 'f', lazy.spawn('thunar'), desc='Thunar file browser'),
+
+    # Script launchers
+    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], 'c', lazy.spawn('dmenu_configs'), desc='Edit configs'),
+
 
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
@@ -77,16 +85,13 @@ keys = [
     Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack"),
     
-
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart Qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(),
-        desc="Spawn a command using a prompt widget"),
-]
+    ]
 
 groups = [Group(i) for i in "123456789"]
 
@@ -108,7 +113,6 @@ for i in groups:
 layouts = [
     layout.Columns(border_focus_stack='#d75f5f'),
     layout.Max(),
-    layout.Floating(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -143,10 +147,16 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.Battery(),
+                widget.TextBox(text=' | '),
+                widget.OpenWeather(location='Champaign,US'),
+                widget.TextBox(text=' | '),
+                #widget.CPU(),
+                widget.Memory(),
+                widget.TextBox(text=' | '),
                 widget.Systray(),
+                widget.TextBox(text=' | '),
                 widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
-                widget.QuickExit(),
+                widget.TextBox(text=' | '),
             ],
             24,
         ),
@@ -191,8 +201,6 @@ focus_on_window_activation = "smart"
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
 
-import os
-import subprocess
 
 @hook.subscribe.startup_once
 def autostart():
