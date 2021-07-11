@@ -37,6 +37,8 @@ import subprocess
 mod = "mod4"
 terminal = 'alacritty'
 
+scripts = '~/gitHub/bashScripts/'
+
 keys = [
 
     # Applications
@@ -47,7 +49,9 @@ keys = [
 
     # Script launchers
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], 'c', lazy.spawn('dmenu_configs'), desc='Edit configs'),
+    Key([mod], 'c', lazy.spawn(scripts + 'dmenu_configs'), desc='Edit configs'),
+    Key([mod], 'p', lazy.spawn(scripts + 'dmenu_papers'), desc='Open papers'),
+
 
 
     # Switch between windows
