@@ -98,7 +98,7 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     ]
 
-groups = [Group(i) for i in "123456789"]
+groups = [Group(i) for i in "1234"]
 
 for i in groups:
     keys.extend([
@@ -142,7 +142,6 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
                 widget.GroupBox(),
                 widget.Prompt(),
                 widget.WindowName(),
@@ -156,6 +155,8 @@ screens = [
                 widget.OpenWeather(location='Champaign,US'),
                 widget.TextBox(text=' | '),
                 #widget.CPU(),
+                widget.Battery(),
+                widget.TextBox(text=' | '),
                 widget.Memory(),
                 widget.TextBox(text=' | '),
                 widget.Systray(),
