@@ -6,4 +6,4 @@ insync start &
 picom &
 xfce4-clipman &
 volumeicon &
-nitrogen --restore &
+#nitrogen --restore &

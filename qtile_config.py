@@ -37,7 +37,7 @@ import subprocess
 mod = "mod4"
 terminal = 'alacritty'
 
-scripts = '~/gitHub/bashScripts/'
+scripts = '/home/oliver/gitHub/bashScripts/'
 
 keys = [
 
