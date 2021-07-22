@@ -136,9 +136,6 @@ ex ()
   fi
 }
 
-# Color scheme from wal
-(cat ~/.cache/wal/sequences &)
-
 export PYTHONPATH='/home/oliver/gitHub/Echem_fun'
 export VISUAL=vim;
 export EDITOR=vim;
@@ -150,7 +147,5 @@ alias pc="c; p"
 alias v="vim"
 alias activate='source penv/bin/activate'
 alias penv='p -m venv penv; activate'
-
-alias qtconf='cd ~/.config/qtile; v config.py'
 
 pfetch
