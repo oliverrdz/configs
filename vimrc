@@ -11,6 +11,7 @@ set shiftwidth=4 " 4 spaces for auto indent
 set tabstop=4
 set smarttab
 set number relativenumber
+set colorcolumn=80
 
 "let g:netrw_browse_split=4 " open in prior window
 let g:netrw_liststyle=3 " tree view
