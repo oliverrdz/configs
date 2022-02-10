@@ -136,7 +136,7 @@ ex ()
   fi
 }
 
-export PYTHONPATH='/home/oliver/gitHub/Echem_fun'
+
 export VISUAL=vim;
 export EDITOR=vim;
 
