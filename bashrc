@@ -148,4 +148,5 @@ alias v="vim"
 alias activate='source penv/bin/activate'
 alias penv='p -m venv penv; activate'
 
+set -o vi
 pfetch
