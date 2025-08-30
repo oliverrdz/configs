@@ -113,5 +113,8 @@ if ! shopt -oq posix; then
 fi
 
 alias c="clear; fastfetch"
+alias p="python3"
+alias activate='source penv/bin/activate'
+alias penv='p -m venv penv; activate'
 
 fastfetch
