@@ -15,11 +15,6 @@ set shiftwidth=4
 " when pressing tab:
 set expandtab
 
+" Run python scripts
 autocmd FileType python map <buffer> <F9> :w<CR>:exec "!python3" shellescape(@%,1)<CR>
 autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec "!python3" shellescape(@%,1)<CR>
-
-autocmd FileType markdown map <buffer> <F9> :w<CR>:exec '!pandoc % -o %.pdf'<CR>
-autocmd FileType markdown imap <buffer> <F9> <esc>:w<CR>:exec '!pandoc % -o %.pdf'<CR>
-
-autocmd FileType tex map <buffer> <F9> :w<CR>:exec '!pdflatex %'<CR>
-autocmd FileType tex imap <buffer> <F9> <esc>:w<CR>:exec '!pdflatex %'<CR>
