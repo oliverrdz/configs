@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+DEVICE="/dev/video0"
+RESOLUTION="1920x1080"
+FPS=30
+
+usage() {
+    echo "Usage: $(basename "$0") [-p | -v]"
+    echo "  -p    Take a photo"
+    echo "  -v    Record a 30-second video"
+    exit 1
+}
+
+[[ $# -eq 1 ]] || usage
+
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+
+case "$1" in
+    -p)
+        FILE="photo_${TIMESTAMP}.jpg"
+        ffmpeg -loglevel error \
+               -f v4l2 \
+               -input_format mjpeg \
+               -video_size "$RESOLUTION" \
+               -i "$DEVICE" \
+               -frames:v 1 \
+               -update 1 \
+               "$FILE"
+
+        echo "Photo saved as $FILE"
+        ;;
+
+    -v)
+        FILE="video_${TIMESTAMP}.mp4"
+        ffmpeg -loglevel error \
+               -f v4l2 \
+               -input_format mjpeg \
+               -video_size "$RESOLUTION" \
+               -framerate "$FPS" \
+               -i "$DEVICE" \
+               -t 30 \
+               -c:v libx264 \
+               -preset veryfast \
+               "$FILE"
+
+        echo "Video saved as $FILE"
+        ;;
+
+    *)
+        usage
+        ;;
+esac
